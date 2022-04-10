@@ -8,10 +8,9 @@ assignees: Eugenius1st
 ---
 
 **Description**
-// Please describe
+
 
 **To do**
-// Please list up to do
+- [ ] todo
 
 **etc..**
-// Notice somthing
