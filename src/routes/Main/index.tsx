@@ -2,9 +2,13 @@ import styled from "styled-components";
 import Header from "../../Components/Header";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+// import {useQuery} from 'react-query'
+// import { useHistory } from "react-router-dom";
+// import {fetchCoins} from "../../api";
 
 export default function Main() {
-    const [coins, setCoins] = useState<CoinInterface[]>([]);
+    // const [isLoading, data] = useQuery<ICoin[]>{'allCoins', fetchCoins}
+    /*     const [coins, setCoins] = useState<CoinInterface[]>([]);
     const [loading, setLoading] = useState(true);
     useEffect(() => {
         (async () => {
@@ -13,19 +17,28 @@ export default function Main() {
             setCoins(json.slice(0, 100));
             setLoading(false);
         })();
-    }, []);
-
+    }, []); */
+    // let history = useHistory();
     return (
         <>
             <Header />
-            <Wrapper>
-                {coins.map((coin) => (
+            {/* <Wrapper>
+                {data?.slice(0,100).map((coin) => (
                     <Coin key={coin.id}>
-                        <Link to={`/${coin.id}`}>{coin.name} &rarr;</Link>
-                        <Img src={`https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/master/16/${coin.name.toLowerCase().split(" ").join("-")}.png`} />
+                        <Img src={`https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/master/16/${coin.name
+                        .toLowerCase()
+                        .split(" ").join("-")}.png`} />
                     </Coin>
+
+            //             <Link
+            //     to={{
+            //       pathname: `/${coin.id}`,
+            //       state: { name: coin.name },
+            //       //Link를 이용해 string 이외에 더 많은 데이터를 보낼 수 있다
+            //     }}
+            //   >{coin.name} </Link>
                 ))}
-            </Wrapper>
+            </Wrapper> */}
         </>
     );
 }
@@ -43,9 +56,9 @@ const Coin = styled.li`
     padding: 5px 10px;
     border-radius: 5px;
     a {
-        padding: 20px; // 좀 더 넓은 범위에서 transition 효과 적용 가능
+        padding: 20px;
         transition: color 0.2s ease-in;
-        display: block; //화살표 범위 이상 클릭해도 transition 효과 적용 되도록
+        display: block;
     }
     &:hover {
         a {
@@ -58,7 +71,17 @@ const Img = styled.img`
     width: 50px;
 `;
 
-interface CoinInterface {
+/* interface CoinInterface {
+    id: string;
+    name: string;
+    symbol: string;
+    rank: number;
+    is_new: boolean;
+    is_active: boolean;
+    type: string;
+} */
+
+interface ICoin {
     id: string;
     name: string;
     symbol: string;
