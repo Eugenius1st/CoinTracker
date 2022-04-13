@@ -5,7 +5,6 @@ import { Helmet } from "react-helmet";
 import Header from "../../Components/Header";
 import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
-import { ForkLeft } from "@mui/icons-material";
 
 const Container = styled.div`
     padding: 0px 24px;
@@ -24,7 +23,7 @@ const Coin = styled.li`
     padding: 10px;
     background-color: #1f2b3824;
     a {
-        padding: 5px; // 좀 더 넓은 범위에서 transition 효과 적용 가능
+        padding: 5px;
         transition: color 0.2s ease-in;
     }
 
