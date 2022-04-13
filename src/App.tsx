@@ -56,16 +56,12 @@ table {
 }
 body{
   font-family: 'Source Sans Pro', sans-serif;
-  //현재 App은 Theme안에 있으므로 Theme의 props에 접근 가능한 상태이다.
-  //그 말은 즉슨 이렇게 쓸 수 있다는 뜻이다
   background-color: ${(props) => props.theme.bgColor};
   color : ${(props) => props.theme.textColor};
 }
 a{
   text-decoration: none;
   color:inherit;
-// 링크가 클릭되었을 때 너무 못생겨져서 부모로부터 상속받게 하여
-// 색깔을 유지시켰다
 }
   `;
 

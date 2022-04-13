@@ -31,4 +31,9 @@ const Wrapper2 = styled.div`
     align-items: center;
     justify-content: space-between;
     margin: 0 auto;
+
+    span {
+        font-weight: bold;
+        color: ${(props) => props.theme.accentColor};
+    }
 `;
