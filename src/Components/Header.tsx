@@ -1,15 +1,21 @@
 import styled from "styled-components";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import DehazeIcon from "@mui/icons-material/Dehaze";
+import { useNavigate } from "react-router";
 
 export default function Header() {
+    const navigate = useNavigate();
     return (
         <>
             <Wrapper>
                 <Wrapper2>
-                    <ArrowBackIosNewIcon sx={{ fontSize: 30 }} />
+                    <button onClick={() => navigate(-1)}>
+                        <ArrowBackIosNewIcon sx={{ fontSize: 30, color: "white" }} />
+                    </button>
                     <span>Coin Tracker</span>
-                    <DehazeIcon sx={{ fontSize: 30 }} />
+                    <button onClick={() => navigate("/")}>
+                        <DehazeIcon sx={{ fontSize: 30, color: "white" }} />
+                    </button>
                 </Wrapper2>
             </Wrapper>
         </>

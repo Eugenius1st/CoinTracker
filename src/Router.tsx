@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./routes/Home";
 import Main from "./routes/Main";
 import Coin from "./routes/Coin";
-import Test from "./routes/Test";
+import Menu from "./routes/Menu";
 
 export default function Router() {
     return (
@@ -11,7 +11,7 @@ export default function Router() {
                 <Route path="/:coinId/*" element={<Coin />} />
                 <Route path="/" element={<Home />} />
                 <Route path="/main" element={<Main />} />
-                <Route path="/test" element={<Test />} />
+                <Route path="/menu" element={<Menu />} />
             </Routes>
         </BrowserRouter>
     );
