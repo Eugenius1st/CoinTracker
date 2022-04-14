@@ -1,6 +1,5 @@
 import ApexChart from "react-apexcharts";
 import { useEffect, useState } from "react";
-import { fetchCoinHistory } from "../../api";
 interface ChartProps {
     coinId: string;
 }

@@ -128,7 +128,7 @@ function Coin() {
                             </Tab>
                         </Tabs>
                         <Routes>
-                            <Route path="price" element={<Price />} />
+                            <Route path="price" element={<Price coinId={coinId as string} />} />
                             <Route path="chart" element={<Chart coinId={coinId as string} />} />
                         </Routes>
                     </>
