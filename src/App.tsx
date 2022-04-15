@@ -39,6 +39,14 @@ menu, ol, ul, li {
   list-style: none;
 
 }
+button{
+  border: none;
+  outline: none;
+  background-color: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
 blockquote, q {
   quotes: none;
 }

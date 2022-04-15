@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import { useLocation, useParams, Routes, Route, useMatch } from "react-router";
+import { useParams, Routes, Route, useMatch } from "react-router";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Price from "../Price";
 import Chart from "../Chart";
 import Header from "../../Components/Header";
-import { Link } from "react-router-dom";
 import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
 
 const Overview = styled.div`
@@ -65,27 +65,9 @@ const Tab = styled.span<{ isActive: boolean }>`
     }
 `;
 
-interface RouteParams {
-    coinId: string;
-}
-interface RouteState {
-    name: string;
-}
-
-interface Params {
-    coinID: String;
-}
-
-interface ILocation {
-    state: {
-        name: string;
-    };
-}
-
 function Coin() {
     const [loading, setLoading] = useState(true);
     const { coinId } = useParams();
-    const { state } = useLocation() as ILocation;
     const [info, setInfo] = useState<InfoData>();
     const [priceInfo, setPriceInfo] = useState<PriceData>();
     const priceMatch = useMatch("/:coinId/price");
@@ -146,7 +128,7 @@ function Coin() {
                             </Tab>
                         </Tabs>
                         <Routes>
-                            <Route path="price" element={<Price />} />
+                            <Route path="price" element={<Price coinId={coinId as string} />} />
                             <Route path="chart" element={<Chart coinId={coinId as string} />} />
                         </Routes>
                     </>

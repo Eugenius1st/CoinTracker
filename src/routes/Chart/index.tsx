@@ -1,6 +1,7 @@
 import ApexChart from "react-apexcharts";
+import styled from "styled-components";
+import Button from "@mui/material/Button";
 import { useEffect, useState } from "react";
-import { fetchCoinHistory } from "../../api";
 interface ChartProps {
     coinId: string;
 }
@@ -38,51 +39,75 @@ export default function Chart({ coinId }: ChartProps) {
             {isLoading ? (
                 "Loading chart..."
             ) : (
-                <ApexChart
-                    type="line"
-                    series={[
-                        {
-                            name: "Price",
-                            data: data?.map((price) => price.close) ?? [],
-                        },
-                    ]}
-                    options={{
-                        theme: {
-                            mode: "dark",
-                        },
-                        chart: {
-                            height: 300,
-                            width: 500,
-                            toolbar: {
+                <>
+                    <CoinName>{coinId}</CoinName>
+                    <ApexChart
+                        type="line"
+                        series={[
+                            {
+                                name: "Price",
+                                data: data?.map((price) => price.close) ?? [],
+                            },
+                        ]}
+                        options={{
+                            theme: {
+                                mode: "dark",
+                            },
+                            chart: {
+                                height: 300,
+                                width: 500,
+                                toolbar: {
+                                    show: false,
+                                },
+                                background: "transparent",
+                            },
+                            grid: { show: false },
+                            stroke: {
+                                curve: "smooth",
+                                width: 4,
+                            },
+                            yaxis: {
                                 show: false,
                             },
-                            background: "transparent",
-                        },
-                        grid: { show: false },
-                        stroke: {
-                            curve: "smooth",
-                            width: 4,
-                        },
-                        yaxis: {
-                            show: false,
-                        },
-                        xaxis: {
-                            type: "datetime",
-                            categories: data?.map((price) => price.time_close),
-                        },
-                        fill: {
-                            type: "gradient",
-                            gradient: { gradientToColors: ["#0be881"], stops: [0, 100] },
-                        },
-                        colors: ["#0fbcf9"],
-                        tooltip: {
-                            y: {
-                                formatter: (value) => `$${value.toFixed(2)}`,
+                            xaxis: {
+                                type: "datetime",
+                                categories: data?.map((price) => price.time_close),
                             },
-                        },
-                    }}
-                />
+                            fill: {
+                                type: "gradient",
+                                gradient: { gradientToColors: ["#0be881"], stops: [0, 100] },
+                            },
+                            colors: ["#0fbcf9"],
+                            tooltip: {
+                                y: {
+                                    formatter: (value) => `$${value.toFixed(2)}`,
+                                },
+                            },
+                        }}
+                    />
+                    <BtnWrapper>
+                        <Button color="secondary">Info</Button>
+                        <Button variant="contained" color="success">
+                            Buy
+                        </Button>
+                        <Button variant="outlined" color="error">
+                            Sell
+                        </Button>
+                    </BtnWrapper>
+                </>
             )}
         </div>
     );
 }
+
+const BtnWrapper = styled.div`
+    margin-top: 2%;
+    margin-left: 24%;
+`;
+
+const CoinName = styled.div`
+    font-size: 1.5em;
+    text-align: center;
+    font-weight: bold;
+    color: ${(props) => props.theme.accentColor};
+`;
