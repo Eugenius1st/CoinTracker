@@ -120,6 +120,7 @@ const CoinName = styled.div`
     font-size: 1.5em;
     text-align: center;
     font-weight: bold;
+    color: ${(props) => props.theme.accentColor};
 `;
 
 const Img = styled.img`
