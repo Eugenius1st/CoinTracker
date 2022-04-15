@@ -60,7 +60,7 @@ const IconStyle = styled.div`
 `;
 
 const Btn = styled.div`
-    width: 100%;
+    width: 90%;
     text-align: center;
     margin: 0 auto;
     font-size: 25px;
