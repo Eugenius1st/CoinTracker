@@ -40,6 +40,7 @@ export default function Chart({ coinId }: ChartProps) {
                 "Loading chart..."
             ) : (
                 <>
+                    <CoinName>{coinId}</CoinName>
                     <ApexChart
                         type="line"
                         series={[
@@ -102,4 +103,11 @@ export default function Chart({ coinId }: ChartProps) {
 const BtnWrapper = styled.div`
     margin-top: 2%;
     margin-left: 24%;
+`;
+
+const CoinName = styled.div`
+    font-size: 1.5em;
+    text-align: center;
+    font-weight: bold;
+    color: ${(props) => props.theme.accentColor};
 `;
