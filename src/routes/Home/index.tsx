@@ -27,7 +27,7 @@ const Wrapper = styled.div`
     margin: 0 auto;
     margin-top: 15vh;
     text-align: center;
-    color: ${(props) => props.theme.accentColor};
+    color: #f1c40f;
 `;
 
 const Name = styled.div`

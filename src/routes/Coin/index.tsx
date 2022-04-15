@@ -13,6 +13,7 @@ const Overview = styled.div`
     background-color: rgba(0, 0, 0, 0.5);
     padding: 10px 20px;
     border-radius: 10px;
+    font-weight: bold;
 `;
 
 const OverviewItem = styled.div`
@@ -52,6 +53,7 @@ const Tabs = styled.div`
 `;
 
 const Tab = styled.span<{ isActive: boolean }>`
+    font-weight: bold;
     text-align: center;
     text-transform: uppercase;
     font-size: 12px;
@@ -129,7 +131,7 @@ function Coin() {
                         </Tabs>
                         <Routes>
                             <Route path="price" element={<Price coinId={coinId as string} />} />
-                            <Route path="chart" element={<Chart coinId={coinId as string} />} />
+                            <Route path="chart" element={<Chart coinId={coinId as string} isDark={false} />} />
                         </Routes>
                     </>
                 )}

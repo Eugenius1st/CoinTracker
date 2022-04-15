@@ -1,10 +1,14 @@
 import styled from "styled-components";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import DehazeIcon from "@mui/icons-material/Dehaze";
+import BrightnessMediumIcon from "@mui/icons-material/BrightnessMedium";
 import { useNavigate } from "react-router";
+import { useSetRecoilState } from "recoil";
+import { isDarkAtom } from "../atoms";
 
 export default function Header() {
     const navigate = useNavigate();
+    const setterDarkAtom = useSetRecoilState(isDarkAtom);
+    const toggleDarkAtom = () => setterDarkAtom((prev) => !prev);
     return (
         <>
             <Wrapper>
@@ -13,8 +17,8 @@ export default function Header() {
                         <ArrowBackIosNewIcon sx={{ fontSize: 30, color: "white" }} />
                     </button>
                     <span>Coin Tracker</span>
-                    <button onClick={() => navigate("/")}>
-                        <DehazeIcon sx={{ fontSize: 30, color: "white" }} />
+                    <button onClick={toggleDarkAtom}>
+                        <BrightnessMediumIcon sx={{ fontSize: 30, color: "white" }} />
                     </button>
                 </Wrapper2>
             </Wrapper>

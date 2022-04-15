@@ -2,8 +2,10 @@ import ApexChart from "react-apexcharts";
 import styled from "styled-components";
 import Button from "@mui/material/Button";
 import { useEffect, useState } from "react";
+
 interface ChartProps {
     coinId: string;
+    isDark: boolean;
 }
 interface IHistorical {
     time_open: string;
@@ -16,7 +18,7 @@ interface IHistorical {
     market_cap: number;
 }
 
-export default function Chart({ coinId }: ChartProps) {
+export default function Chart({ coinId, isDark }: ChartProps) {
     const BASE_URL = `https://api.coinpaprika.com/v1`;
     const endDate = Math.floor(Date.now() / 1000);
     const startDate = endDate - 60 * 60 * 24 * 7 * 2;
@@ -51,7 +53,7 @@ export default function Chart({ coinId }: ChartProps) {
                         ]}
                         options={{
                             theme: {
-                                mode: "dark",
+                                mode: isDark ? "dark" : "light",
                             },
                             chart: {
                                 height: 300,

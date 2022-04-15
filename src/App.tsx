@@ -1,5 +1,9 @@
 import { createGlobalStyle } from "styled-components";
 import Router from "./Router";
+import { ThemeProvider } from "styled-components";
+import { darkTheme, lightTheme } from "./theme";
+import { useRecoilValue } from "recoil";
+import { isDarkAtom } from "./atoms";
 
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500&family=Bebas+Neue&family=Black+Han+Sans&family=Do+Hyeon&family=Source+Sans+Pro:wght@300;400&family=Ubuntu+Mono:ital@1&display=swap');
@@ -74,10 +78,13 @@ a{
   `;
 
 export default function App() {
+    const isDark = useRecoilValue(isDarkAtom);
     return (
         <>
-            <GlobalStyle />
-            <Router />
+            <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
+                <GlobalStyle />
+                <Router />
+            </ThemeProvider>
         </>
     );
 }
