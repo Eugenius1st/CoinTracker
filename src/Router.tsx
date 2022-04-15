@@ -6,7 +6,7 @@ import Menu from "./routes/Menu";
 
 export default function Router() {
     return (
-        <BrowserRouter>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
             <Routes>
                 <Route path="/:coinId/*" element={<Coin />} />
                 <Route path="/" element={<Home />} />
