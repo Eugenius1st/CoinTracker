@@ -1,4 +1,4 @@
-import ApexChart from "react-apexcharts";
+import ReactApexChart from "react-apexcharts";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { PersonPin } from "@mui/icons-material";
@@ -44,7 +44,59 @@ export default function Price({ coinId }: ChartProps) {
             ) : (
                 <Wrapper>
                     <CoinName>{coinId}</CoinName>
-                    <Img src={require("./candle.png")} />
+                    <ReactApexChart
+                        type="candlestick"
+                        name="candle"
+                        series={[
+                            {
+                                data: data?.map((price) => [
+                                    new Date(price.time_open).getTime(), // 날짜
+                                    price.open, // 시작가
+                                    price.high, // 최고가
+                                    price.low, // 최저가
+                                    price.close, // 종가
+                                ]) as any,
+                            },
+                        ]}
+                        options={{
+                            theme: {
+                                mode: "dark",
+                            },
+                            chart: {
+                                type: "candlestick",
+                                height: 350,
+                                width: 500,
+                                toolbar: {
+                                    show: false,
+                                },
+                                background: "transparent",
+                            },
+                            stroke: {
+                                curve: "smooth",
+                                width: 2,
+                            },
+                            yaxis: {
+                                show: false,
+                            },
+                            xaxis: {
+                                type: "datetime",
+                                categories: data?.map((price) => price.time_close),
+                                labels: {
+                                    style: {
+                                        colors: "#9c88ff",
+                                    },
+                                },
+                            },
+                            plotOptions: {
+                                candlestick: {
+                                    colors: {
+                                        upward: "#137bf9",
+                                        downward: "#f94513",
+                                    },
+                                },
+                            },
+                        }}
+                    />
                     <BtnWrapper>
                         <Button color="secondary">Info</Button>
                         <Button variant="contained" color="success">
